@@ -1,0 +1,26 @@
+Package: CovCoExpNets
+Type: Package
+Title: Creation and annotation of covariate-specific gene co-expression networks
+Version: 0.1.0
+Authors@R: c(person("Alicia", "Gómez-Pascual", email = "alicia.gomez1@um.es", 
+    role = c("aut", "cre")), person("Juan A.", "Botía", role = "aut"))
+Maintainer: <alicia.gomez1@um.es>
+Description: We integrate glmnet within the CovCoExpNets R package to create covariate-specific GCNs based on relevant predictors 
+    (i.e. predictors with non-zero coefficients) as detected by the LASSO regularization mechanism. Each hub gene leads to exactly 
+    a new module in the covariate-specific GCN. To complete the composition of those gene modules, for each hub gene s, we create 
+    a basic linear model age ~ s + b0 and keep adding genes to the model, choosing amongst the genes with highest correlation with 
+    the hub s. We do this while the R2 of the model improves. Each new module´s gene set is annotated with gProfiler2 with the 
+    sources GO, KEGG and REAC.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    doParallel,
+    caret,
+    glmnet,
+    gprofiler2,
+    ggfortify,
+    ggplot2
+RoxygenNote: 7.1.0
+URL: https://github.com/aliciagp/CovCoExpNets
+BugReports: https://github.com/aliciagp/CovCoExpNets/issues
